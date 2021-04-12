@@ -11,7 +11,7 @@ import com.burak.chatipia.data.local.MessagesDao
 /**
  * Created by mburak on 11.04.2021.
  */
-@Database(entities = [LocalMessages::class], version = 4)
+@Database(entities = [LocalMessages::class], version = 5)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun messagesDao(): MessagesDao
 

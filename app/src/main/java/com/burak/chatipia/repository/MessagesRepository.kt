@@ -1,6 +1,5 @@
 package com.burak.chatipia.repository
 
-import androidx.lifecycle.LiveData
 import com.burak.chatipia.data.local.LocalMessages
 import com.burak.chatipia.data.local.MessagesDao
 import com.burak.chatipia.data.remote.Message
@@ -11,7 +10,7 @@ import com.burak.chatipia.network.NetworkManager
 /**
  * Created by mburak on 11.04.2021.
  */
-class MessagesRepository(val messagesDao: MessagesDao, private val ownerName: String) {
+class MessagesRepository(private val messagesDao: MessagesDao, private val ownerName: String) {
     suspend fun getMessagesRemote() = NetworkManager.getRetrofit().getMessages()
 
     suspend fun getMessagesLocal() = messagesDao.loadAllByIds(ownerName)
