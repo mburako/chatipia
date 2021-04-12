@@ -1,5 +1,6 @@
-package com.burak.chatipia.data
+package com.burak.chatipia.data.remote
 
+import com.burak.chatipia.data.remote.Message
 import com.squareup.moshi.Json
 
 

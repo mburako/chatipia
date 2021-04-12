@@ -10,13 +10,19 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  */
 class NetworkManager {
     companion object {
-        fun getRetrofit(): ApiService {
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://media.meditopia.com/files/") // chatdata-example.json
-                .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
-                .build()
+        private var apiService: ApiService? = null
 
-            return retrofit.create(ApiService::class.java)
+        fun getRetrofit(): ApiService {
+            if (apiService == null) {
+                val retrofit = Retrofit.Builder()
+                    .baseUrl("https://media.meditopia.com/files/") // chatdata-example.json
+                    .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().build()))
+                    .build()
+
+                apiService = retrofit.create(ApiService::class.java)
+            }
+
+            return apiService!!
         }
     }
 }

@@ -1,10 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 ext.versions = [
         nav_version: '2.3.5',
-        retrofit: '2.9.0'
+        retrofit: '2.9.0',
+        room_version: '2.2.6',
+        coroutines: '1.4.1',
+        lifecycle: '2.3.1'
 ]
 
 android {
@@ -46,8 +50,28 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$versions.nav_version"
 
+    //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+
+    //Room
+    implementation "androidx.room:room-runtime:$versions.room_version"
+    kapt "androidx.room:room-compiler:$versions.room_version"
+
+    //Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$versions.room_version"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-common:$versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
+    implementation "android.arch.lifecycle:extensions:$versions.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$versions.room_version"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
