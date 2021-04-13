@@ -14,7 +14,12 @@ class MainViewModel(private val repository: MessagesRepository): ViewModel() {
         val source = repository.getMessagesLocal()
         emitSource(source)
 
-        val messages = repository.getMessagesRemote()
-        repository.saveMessages(messages)
+        try {
+            val messages = repository.getMessagesRemote()
+            repository.saveMessages(messages)
+        } catch (e: Exception) {
+            // Do nothing just ignore the results from remote
+            e.printStackTrace()
+        }
     }
 }
