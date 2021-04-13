@@ -2,7 +2,9 @@ package com.burak.chatipia.ui.chat
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.burak.chatipia.R
 import com.burak.chatipia.data.local.LocalMessages
+import com.squareup.picasso.Picasso
 
 
 /**
@@ -30,7 +32,11 @@ class MessagesAdapter(private var messages: MutableList<LocalMessages>): Recycle
         holder.messageContentTextView.text = currentItem.text
         holder.messageDateTextView.text = currentItem.timestamp.toString()
         holder.messageUsernameTextView.text = currentItem.username
-//        holder.avatarImageView
+        Picasso.get()
+            .load(currentItem.avatarURL)
+            .placeholder(R.mipmap.ic_user_placeholder)
+            .error(R.mipmap.ic_user_placeholder)
+            .into(holder.avatarImageView)
     }
 
     fun submitList(list: List<LocalMessages>) {
