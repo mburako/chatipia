@@ -1,9 +1,11 @@
 package com.burak.chatipia.ui.chat
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 
 class ChatFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
@@ -47,8 +50,12 @@ class ChatFragment : Fragment() {
             val text = sendMessageEditText.text.toString().trim()
             if (text.isNotEmpty()) {
                 sendMessage(text)
+                sendMessageEditText.text.clear()
+                hideKeyboard()
             }
         }
+
+        hideKeyboard()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -100,5 +107,11 @@ class ChatFragment : Fragment() {
         GlobalScope.launch(Dispatchers.IO) {
             db.messagesDao().insert(message)
         }
+    }
+
+    private fun hideKeyboard() {
+        val inputMethodManager  =
+            context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        inputMethodManager?.hideSoftInputFromWindow(sendMessageEditText.windowToken, 0)
     }
 }
