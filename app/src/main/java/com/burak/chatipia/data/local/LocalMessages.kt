@@ -17,4 +17,9 @@ data class LocalMessages(@PrimaryKey (autoGenerate = true) val messageId: Long =
                          val username: String,
                          val avatarURL: String,
                          val ownerName: String) {
+
+    enum class ItemType {
+        IN,
+        OUT
+    }
 }

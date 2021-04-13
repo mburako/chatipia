@@ -1,4 +1,4 @@
-package com.burak.chatipia
+package com.burak.chatipia.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

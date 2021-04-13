@@ -2,7 +2,7 @@ package com.burak.chatipia.data
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.burak.chatipia.MainViewModel
+import com.burak.chatipia.ui.MainViewModel
 import com.burak.chatipia.repository.MessagesRepository
 
 
