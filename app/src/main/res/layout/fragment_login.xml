@@ -20,7 +20,7 @@
             android:minWidth="200dp"
             android:minLines="1"
             android:textSize="16sp"
-            android:hint="@string/app_name"
+            android:hint="@string/nickname"
             android:textColorHint="@color/colorPrimary"
             android:background="@drawable/login_edittext_bg"
             android:layout_marginBottom="16dp"/>

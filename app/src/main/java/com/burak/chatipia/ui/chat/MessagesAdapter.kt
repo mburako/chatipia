@@ -1,5 +1,6 @@
 package com.burak.chatipia.ui.chat
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.burak.chatipia.R
@@ -56,6 +57,7 @@ class MessagesAdapter(private var messages: MutableList<LocalMessages>): Recycle
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun setFormattedDate(holder: MessageItemViewHolder, timestamp: Long) {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = timestamp
