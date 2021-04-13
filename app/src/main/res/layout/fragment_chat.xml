@@ -51,7 +51,7 @@
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:background="@drawable/chat_send_button_bg"
             android:text="@string/send"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
