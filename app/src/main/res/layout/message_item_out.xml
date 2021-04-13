@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
@@ -11,7 +11,6 @@
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -41,8 +40,8 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/login_edittext_bg"
-            android:textColor="@color/colorPrimary"
+            android:background="@drawable/chat_bubble"
+            android:textColor="@android:color/white"
             tools:text="Lorem ipsum Lorem ipsumLorem ipsumLorem ipsum" />
 
         <TextView

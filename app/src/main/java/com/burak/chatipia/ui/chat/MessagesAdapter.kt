@@ -32,16 +32,24 @@ class MessagesAdapter(private var messages: MutableList<LocalMessages>): Recycle
         holder.messageContentTextView.text = currentItem.text
         holder.messageDateTextView.text = currentItem.timestamp.toString()
         holder.messageUsernameTextView.text = currentItem.username
-        Picasso.get()
-            .load(currentItem.avatarURL)
-            .placeholder(R.mipmap.ic_user_placeholder)
-            .error(R.mipmap.ic_user_placeholder)
-            .into(holder.avatarImageView)
+        setAvatarUrl(holder, currentItem)
     }
 
     fun submitList(list: List<LocalMessages>) {
         messages.clear()
         messages.addAll(list)
         notifyDataSetChanged()
+    }
+
+    private fun setAvatarUrl(holder: MessageItemViewHolder, currentItem: LocalMessages) {
+        if (currentItem.avatarURL.isNullOrEmpty()) {
+            Picasso.get().load(R.mipmap.ic_user_placeholder).fit().into(holder.avatarImageView);
+        } else {
+            Picasso.get()
+                .load(currentItem.avatarURL)
+                .placeholder(R.mipmap.ic_user_placeholder)
+                .error(R.mipmap.ic_user_placeholder)
+                .into(holder.avatarImageView)
+        }
     }
 }
