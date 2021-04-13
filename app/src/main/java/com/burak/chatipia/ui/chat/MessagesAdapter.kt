@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burak.chatipia.R
 import com.burak.chatipia.data.local.LocalMessages
 import com.squareup.picasso.Picasso
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 /**
@@ -30,7 +33,7 @@ class MessagesAdapter(private var messages: MutableList<LocalMessages>): Recycle
         val currentItem = messages[position]
 
         holder.messageContentTextView.text = currentItem.text
-        holder.messageDateTextView.text = currentItem.timestamp.toString()
+        setFormattedDate(holder, currentItem.timestamp)
         holder.messageUsernameTextView.text = currentItem.username
         setAvatarUrl(holder, currentItem)
     }
@@ -51,5 +54,14 @@ class MessagesAdapter(private var messages: MutableList<LocalMessages>): Recycle
                 .error(R.mipmap.ic_user_placeholder)
                 .into(holder.avatarImageView)
         }
+    }
+
+    private fun setFormattedDate(holder: MessageItemViewHolder, timestamp: Long) {
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = timestamp
+
+        val pattern = "hh.mm a dd/MM/yyyy"
+        val simpleDateFormat = SimpleDateFormat(pattern)
+        holder.messageDateTextView.text = simpleDateFormat.format(calendar.time)
     }
 }
