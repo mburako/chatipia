@@ -1,7 +1,6 @@
 package com.burak.chatipia.ui.chat
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.burak.chatipia.R
 import com.burak.chatipia.data.AppDatabase
 import com.burak.chatipia.data.ViewModelFactory
+import com.burak.chatipia.data.local.LocalMessages
 import com.burak.chatipia.data.local.SharedPrefUtils
 import com.burak.chatipia.repository.MessagesRepository
 import com.burak.chatipia.ui.MainActivity
 import com.burak.chatipia.ui.MainViewModel
 import kotlinx.android.synthetic.main.fragment_chat.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ChatFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
@@ -39,6 +42,13 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
+
+        sendMessageButton.setOnClickListener {
+            val text = sendMessageEditText.text.toString().trim()
+            if (text.isNotEmpty()) {
+                sendMessage(text)
+            }
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -53,6 +63,7 @@ class ChatFragment : Fragment() {
 
         viewModel.messages.observe(viewLifecycleOwner, Observer {
             messagesAdapter.submitList(it)
+            messagesList.scrollToPosition(it.size - 1)
         })
     }
 
@@ -75,6 +86,19 @@ class ChatFragment : Fragment() {
         messagesList.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = messagesAdapter
+        }
+    }
+
+    private fun sendMessage(text: String) {
+        val db = AppDatabase.getDatabase(activity?.applicationContext!!)
+
+        val timestamp = System.currentTimeMillis()
+        val message = LocalMessages(id = timestamp.toString(), text = text, timestamp = timestamp,
+            avatarURL = "", username = userName!!, ownerName = userName!!)
+
+
+        GlobalScope.launch(Dispatchers.IO) {
+            db.messagesDao().insert(message)
         }
     }
 }
