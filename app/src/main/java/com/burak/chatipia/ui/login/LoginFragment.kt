@@ -29,6 +29,7 @@ class LoginFragment : Fragment() {
 
         loginButton.setOnClickListener {
             SharedPrefUtils.setLoggedInUserName(loginUserNameEditText.text.toString(), activity)
+            loginUserNameEditText.text.clear()
             NavHostFragment.findNavController(this).navigate(R.id.action_to_chat)
         }
     }

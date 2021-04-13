@@ -66,6 +66,8 @@ class ChatFragment : Fragment() {
             return
         }
 
+        (activity as MainActivity).setTitle(userName!!)
+
         setupViewModel()
 
         viewModel.messages.observe(viewLifecycleOwner, Observer {
@@ -102,7 +104,6 @@ class ChatFragment : Fragment() {
         val timestamp = System.currentTimeMillis()
         val message = LocalMessages(id = timestamp.toString(), text = text, timestamp = timestamp,
             avatarURL = "", username = userName!!, ownerName = userName!!)
-
 
         GlobalScope.launch(Dispatchers.IO) {
             db.messagesDao().insert(message)

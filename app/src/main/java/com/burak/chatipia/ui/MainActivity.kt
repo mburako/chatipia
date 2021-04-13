@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.burak.chatipia.R
+import com.burak.chatipia.data.local.SharedPrefUtils
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         leaveButton = view.findViewById(R.id.leave_button)
         leaveButton.setOnClickListener {
+            SharedPrefUtils.resetLoggedInUserName(this)
+            setTitle(getString(R.string.app_name))
             onBackPressed()
         }
 

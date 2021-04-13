@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nickname">Kullanıcı Adı</string>
+    <string name="continue_button_text">Devam</string>
+    <string name="leave">Çıkış</string>
+    <string name="enter_message">Bir mesaj yazın</string>
+    <string name="send">Gönder</string>
+</resources>

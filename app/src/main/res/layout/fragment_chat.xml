@@ -37,7 +37,8 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:background="@drawable/login_edittext_bg"
-            android:hint="Enter Message"
+            android:hint="@string/enter_message"
+            android:textColorHint="@color/colorPrimary"
             android:inputType="textCapSentences|textMultiLine"
             android:maxLines="6"
             tools:ignore="Autofill" />
@@ -49,7 +50,7 @@
             android:layout_gravity="bottom"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:background="@drawable/chat_send_button_bg"
-            android:text="Send"
+            android:text="@string/send"
             android:textColor="@color/colorPrimary" />
 
     </LinearLayout>

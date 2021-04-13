@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Chatipia</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">Chatipia</string>
+    <string name="nickname">Nickname</string>
+    <string name="continue_button_text">Continue</string>
+    <string name="leave">Leave</string>
+    <string name="enter_message">Enter your message</string>
+    <string name="send">Send</string>
 </resources>
