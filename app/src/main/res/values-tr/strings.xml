@@ -5,4 +5,5 @@
     <string name="leave">Çıkış</string>
     <string name="enter_message">Bir mesaj yazın</string>
     <string name="send">Gönder</string>
+    <string name="username_length_warning_text">Kullanıcı adı 2 karakterden uzun olmalı.</string>
 </resources>

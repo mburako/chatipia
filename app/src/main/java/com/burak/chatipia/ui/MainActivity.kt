@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         appTitle = view.findViewById(R.id.action_bar_title)
     }
 
-
     fun setTitle(title: String) {
         if (::appTitle.isInitialized) {
             appTitle.text = title

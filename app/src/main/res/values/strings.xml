@@ -5,4 +5,5 @@
     <string name="leave">Leave</string>
     <string name="enter_message">Enter your message</string>
     <string name="send">Send</string>
+    <string name="username_length_warning_text">Username must be longer than 2 characters.</string>
 </resources>

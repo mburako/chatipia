@@ -32,6 +32,7 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/continue_button_text"
             android:textColor="@color/colorPrimaryDarker"
+            android:alpha="0.5"
             android:minWidth="200dp"
             android:background="@drawable/login_button_bg"/>
 
